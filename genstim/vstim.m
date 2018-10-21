@@ -7,6 +7,7 @@ addpath(genpath(fun_dir));
 %% load colorspace function
 %mex colorspace.c % use to creat mex file from C code.
 %% visual property and convert to PRESENTATION COMPATIABLE
+% could use onlie coder: http://www.workwithcolor.com/color-converter-01.htm
 HB_RGB = hsv2rgb(0,0,0.8)*255; %reverse: rgb2hsv
 LB_RGB = hsv2rgb(0,0,0.2)*255; %reverse: rgb2hsv; if use online generated hex code: hex2rgb(H_BRITNESS)*255;
 B_SIZE = 5.2; % in degree
