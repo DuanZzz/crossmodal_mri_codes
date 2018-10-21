@@ -18,14 +18,14 @@ sampleRate = 44100; % in hz/s
 duration = A_DURATION/1000; % in sec
 time = linspace(0,duration,sampleRate*duration);
 longtime = linspace(0,duration*100,sampleRate*duration*100);
-% %% Opt amp for same dBA (Sound Level)
-% % amplitude
-H_AMP = 0.044;
-L_AMP = 0.14;
-% tagetdBA = 65;
-% change_step = 0.01;
-% opt_achive_index = 0;
-% while opt_achive_index==0
+%% Opt amp for same dBA (Sound Level)
+% amplitude
+H_AMP = 0.046;
+L_AMP = 0.136;
+tagetdBA = 65;
+change_step = 0.0001;
+opt_achive_index = 0;
+while opt_achive_index==0
     % gen
     dBA_tone_L_PITCH = L_AMP*sin(2*pi*L_PITCH*longtime);
     dBA_tone_L_PITCH_RAMP = linearRamp (dBA_tone_L_PITCH,RAMPs*(sampleRate/1000));
@@ -34,44 +34,44 @@ L_AMP = 0.14;
     dBA_tone_H_PITCH = H_AMP*sin(2*pi*H_PITCH*longtime);
     dBA_tone_H_PITCH_RAMP = linearRamp (dBA_tone_H_PITCH,RAMPs*(sampleRate/1000));
     audiowrite('dBA_tone_H_PITCH.wav',dBA_tone_H_PITCH_RAMP,sampleRate)
-%
-%     % measure
-%     weightType = 'A-weighting';
-%     % 'A-weighting' | 'C-weighting' | 'Z-weighting' (no weighting)
-%     snd_name='dBA_tone_H_PITCH.wav';
-%     h_pitch = reportdBA(snd_name,weightType);
-%     snd_name='dBA_tone_L_PITCH.wav';
-%     l_pitch = reportdBA(snd_name,weightType);
-%
-%     % check distance
-%     h_dist = h_pitch - tagetdBA;
-%     l_dist = l_pitch - tagetdBA;
-%
-%     % opt_index
-%     if abs(h_dist)<0.5 && abs(l_dist)<0.5
-%         opt_achive_index = 1;
-%     end
-%     disp(['L_AMP = ' num2str(L_AMP) ' ' 'H_AMP = ' num2str(H_AMP)]);
-%     if opt_achive_index==0
-%         % modify amplitude
-%         if h_dist<0
-%             H_AMP = H_AMP + change_step;
-%         elseif h_dist>0
-%             H_AMP = H_AMP - change_step;
-%         end
-%         if l_dist<0
-%             L_AMP = L_AMP + change_step;
-%         elseif l_dist>0
-%             L_AMP = L_AMP - change_step;
-%         end
-%         disp(['change to ->' 'L_AMP = ' num2str(L_AMP) ' ' 'H_AMP = ' num2str(H_AMP)]);
-%     else
-%         disp(['done! fix to ->' 'L_AMP = ' num2str(L_AMP) ' ' 'H_AMP = ' num2str(H_AMP)]);
-%     end
-% end
+
+    % measure
+    weightType = 'A-weighting';
+    % 'A-weighting' | 'C-weighting' | 'Z-weighting' (no weighting)
+    snd_name='dBA_tone_H_PITCH.wav';
+    h_pitch = reportdBA(snd_name,weightType);
+    snd_name='dBA_tone_L_PITCH.wav';
+    l_pitch = reportdBA(snd_name,weightType);
+
+    % check distance
+    h_dist = h_pitch - tagetdBA;
+    l_dist = l_pitch - tagetdBA;
+
+    % opt_index
+    if abs(h_dist)<0.05 && abs(l_dist)<0.05
+        opt_achive_index = 1;
+    end
+    disp(['L_AMP = ' num2str(L_AMP) ' ' 'H_AMP = ' num2str(H_AMP)]);
+    if opt_achive_index==0
+        % modify amplitude
+        if h_dist<0
+            H_AMP = H_AMP + change_step;
+        elseif h_dist>0
+            H_AMP = H_AMP - change_step;
+        end
+        if l_dist<0
+            L_AMP = L_AMP + change_step;
+        elseif l_dist>0
+            L_AMP = L_AMP - change_step;
+        end
+        disp(['change to ->' 'L_AMP = ' num2str(L_AMP) ' ' 'H_AMP = ' num2str(H_AMP)]);
+    else
+        disp(['done! fix to ->' 'L_AMP = ' num2str(L_AMP) ' ' 'H_AMP = ' num2str(H_AMP)]);
+    end
+end
 %% results backup
-H_AMP = 0.044;
-L_AMP = 0.14;
+H_AMP = 0.0462;
+L_AMP = 0.1362;
 
 tone_L_PITCH = L_AMP*sin(2*pi*L_PITCH*time);
 tone_L_PITCH_RAMP = linearRamp (tone_L_PITCH,RAMPs*(sampleRate/1000));
