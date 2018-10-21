@@ -1,0 +1,28 @@
+//Target file
+ItemFile seq_forOPT_block_150.txt
+
+//Property
+Property visual_size 1
+Property visual_lightness 2
+Property sound_pitch 3
+Property sound_location 4
+
+//Constraint all MinDist 1
+
+Constraint sound_location MaxRep 2
+//Constraint visual_size MinDist 2 OtherProperty visual_ligtness
+
+//Constraint sound_location MinNumDiff 1
+
+//Export randomed seq
+OutputFile block_01.txt
+OutputFile block_02.txt
+OutputFile block_03.txt
+OutputFile block_04.txt
+OutputFile block_05.txt
+OutputFile block_06.txt
+OutputFile block_07.txt
+OutputFile block_08.txt
+OutputFile block_09.txt
+OutputFile block_10.txt
+
