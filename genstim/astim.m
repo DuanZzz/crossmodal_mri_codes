@@ -91,7 +91,7 @@ snd_name='dBA_tone_H_PITCH.wav';
 h_pitch_dBa = reportdBA(snd_name,weightType);
 h_pitch_dB = reportdBA(snd_name,'Z-weighting');
 %% prep HRTF
-LOCATIONs = [-45 -25, -10, 0, 10, 25 45]; % in degree
+LOCATIONs = [-45, -25, -22.5, -10, 0, 10, 22.5, 25, 45]; % in degree
 %LOCATIONs = [0:45:360]; % in degree
 
 SOFAstart
