@@ -71,13 +71,21 @@ G    = RGB(:, :, 2);
 B    = RGB(:, :, 3);
 bk_LB = cat(3, R, G, B);
 
+RGB  = ones(300, 300, 3)*0;  % RGB Image
+R    = RGB(:, :, 1);
+G    = RGB(:, :, 2);
+B    = RGB(:, :, 3);
+bk_black = cat(3, R, G, B);
+
+
 stim_HB_B = bk_HB.*cat(3,B_mask,B_mask,B_mask);
 stim_HB_S = bk_HB.*cat(3,S_mask,S_mask,S_mask);
 stim_LB_B = bk_LB.*cat(3,B_mask,B_mask,B_mask);
 stim_LB_S = bk_LB.*cat(3,S_mask,S_mask,S_mask);
 
 %imshow(stim_HB_B);
-imwrite(stim_HB_B,'stim_HB_B.png');
-imwrite(stim_LB_B,'stim_LB_B.png');
-imwrite(stim_HB_S,'stim_HB_S.png');
-imwrite(stim_LB_S,'stim_LB_S.png');
+imwrite(stim_HB_B,'stim_HB_B.bmp');
+imwrite(stim_LB_B,'stim_LB_B.bmp');
+imwrite(stim_HB_S,'stim_HB_S.bmp');
+imwrite(stim_LB_S,'stim_LB_S.bmp');
+imwrite(bk_black,'stim_NONE.bmp');
