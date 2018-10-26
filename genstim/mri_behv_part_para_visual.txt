@@ -1,5 +1,5 @@
 BIG_SIZE SMALL_SIZE
-   131     53
+   141     57
 HIGH_BRIGHTNESS
    204
    204

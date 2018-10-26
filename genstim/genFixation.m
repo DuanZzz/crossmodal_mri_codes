@@ -5,11 +5,11 @@ restoredefaultpath;
 fun_dir = fullfile(pwd,'functions');
 addpath(genpath(fun_dir));
 %% load toolbox
-toolbox_dir = fullfile(pwd,'toolbox','Psychtoolbox-3-Psychtoolbox-3-0a49d7b','Psychtoolbox');
-temp=pwd;
-cd(toolbox_dir);
-SetupPsychtoolbox
-cd(temp);
+% toolbox_dir = fullfile(pwd,'toolbox','Psychtoolbox-3-Psychtoolbox-3-0a49d7b','Psychtoolbox');
+% temp=pwd;
+% cd(toolbox_dir);
+% SetupPsychtoolbox
+% cd(temp);
 %% gen fixation
 % width = 40; dist = 50;
 % % horizontal dimension of display (cm) % viewing distance (cm)
@@ -39,7 +39,7 @@ cd(temp);
 
 %% more high resolution method
 display.dist = 50; % cm
-display.width = 44.5; % cm
+display.width = 61.75; % cm
 display.resolution = [1280,800];
 
 r1 = angle2pix(display,0.2);

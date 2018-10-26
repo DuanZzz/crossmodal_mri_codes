@@ -21,7 +21,7 @@ SPL = splMeter('TimeWeighting','Fast', ...
 while ~isDone(source)
     x = source();
     %player(x);
-    [~,~,~,Lmax] = SPL(x);
+    [~,~,~,Lmax] = SPL(x(:,1));
     %scope([Lt,Leq,Lpeak,Lmax])
 end
 

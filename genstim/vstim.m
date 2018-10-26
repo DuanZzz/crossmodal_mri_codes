@@ -14,8 +14,8 @@ B_SIZE = 5.2; % in degree
 S_SIZE = 2.1; % in degree
 % SIZE
 display.dist = 50; % cm
-display.width = 44.5; % cm
-display.resolution = [1280,800];
+display.width = 61.75; % cm
+display.resolution = [1920,1080];
 ang_B = B_SIZE;
 ang_S = S_SIZE;
 pix_B = angle2pix(display,ang_B);

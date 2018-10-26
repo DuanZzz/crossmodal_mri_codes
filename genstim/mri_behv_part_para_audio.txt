@@ -1,6 +1,2 @@
 High Freq Low Freq
 4500.0000 250.0000
-High Freq dB Low Freq dB
-64.2627 73.6637
-High Freq dBA Low Freq dBA
-64.9680 64.9906
