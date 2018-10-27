@@ -161,27 +161,27 @@ for i=1:length(LOCATIONs)
     xs = [rad(LOCATIONs(i)) 0 1];
     %xs = [0 rad(zLOCATIONs(i)) 0.5];
     ir = get_ir(hrtf,X,head_orientation,xs,coordinate_system,conf);
-%     hav = audioread('high_pitch.wav');
-%     lav = audioread('low_pitch.wav');
-    hav = audioread('high_pitch_long.wav');
-    lav = audioread('low_pitch_long.wav');
-    H_AMP = max(max(hav));
-    L_AMP = max(max(lav));
-    hsig = auralize_ir(ir,hav,1,conf);
-    lsig = auralize_ir(ir,lav,1,conf);
+    adj_hav = audioread('high_pitch.wav');
+    adj_lav = audioread('low_pitch.wav');
+    hav = audioread('high_pitch.wav');
+    lav = audioread('low_pitch.wav');
+    H_AMP = max(max(adj_hav));
+    L_AMP = max(max(adj_lav));
+    hsig = auralize_ir(ir,hav,0,conf);
+    lsig = auralize_ir(ir,lav,0,conf);
     
     %hsig_RAMP = linearRamp(hsig,RAMPs*(sampleRate/1000));
-    scale_hsig = hsig./max(max(hsig))*H_AMP;
+    %scale_hsig = hsig./max(max(hsig))*H_AMP;
     
     %lsig_RAMP = linearRamp(lsig,RAMPs*(sampleRate/1000));
-    scale_lsig = lsig./max(max(lsig))*L_AMP;
+    %scale_lsig = lsig./max(max(lsig))*L_AMP;
     
     
     %sound(scale_hsig_RAMP,conf.fs);
     %pause(0.5);
     
-    audiowrite(['H_' Names{i} '.wav'],scale_hsig,conf.fs);
-    audiowrite(['L_' Names{i} '.wav'],scale_lsig,conf.fs);
+    audiowrite(['H_' Names{i} '.wav'],hsig,conf.fs);
+    audiowrite(['L_' Names{i} '.wav'],lsig,conf.fs);
 end
 %% record info
 fileID = fopen('mri_behv_part_para_audio.txt','w');
