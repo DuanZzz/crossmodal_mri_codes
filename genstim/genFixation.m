@@ -40,7 +40,7 @@ addpath(genpath(fun_dir));
 %% more high resolution method
 display.dist = 50; % cm
 display.width = 61.75; % cm
-display.resolution = [1280,800];
+display.resolution = [1920,1080];
 
 r1 = angle2pix(display,0.2);
 r2 = angle2pix(display,0.6);
