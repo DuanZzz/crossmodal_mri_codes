@@ -24,6 +24,14 @@ pix = round(sz/pixSize);   %pix
 
 return
 
+%%
+% 
+%  REF
+%  angle2pix.jpg for sure why this method is reasonable
+% 
+
+
+
 %test code
 
 display.dist = 60; %cm
