@@ -151,15 +151,14 @@
     head_orientation = [0 0];
     coordinate_system = 'spherical';
     %hrtf = SOFAload([pwd filesep 'datasets' '/SCUT_KEMAR_radius_1.sofa']);
-    hrtf = SOFAload([pwd filesep 'datasets' '/QU_KEMAR_anechoic_all.sofa']);
+    hrtf = SOFAload([pwd filesep 'datasets' '/QU_KEMAR_anechoic_0_5m.sofa']);
     conf = SFS_config;
     conf.ir.usehcomp = true;
     conf.ir.hcompfile = [pwd filesep 'datasets' '/QU_KEMAR_AKGK271_hcomp.wav'];
     conf.N = conf.fs/10;
     %zLOCATIONs = [-30:5:90];
     for i=1:length(LOCATIONs)
-        xs = [rad(LOCATIONs(i)) 0 1];
-        %xs = [0 rad(zLOCATIONs(i)) 0.5];
+        xs = [rad(LOCATIONs(i)) 0 0.5];
         ir = get_ir(hrtf,X,head_orientation,xs,coordinate_system,conf);
         hav = audioread('high_pitch.wav');
         lav = audioread('low_pitch.wav');

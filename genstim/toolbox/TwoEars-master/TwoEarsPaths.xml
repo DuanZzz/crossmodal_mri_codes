@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Path configuration file for the Two!Ears Auditory Model -->
+
+<!-- The following entries specify the relative pathes to the single modules of
+     the Two!Ears Auditory Model. -->
+
+<repoPaths>
+    <binaural-simulator>./BinauralSimulator</binaural-simulator>
+    <sofa>./SOFA</sofa>
+    <auditory-front-end>./AuditoryFrontEnd</auditory-front-end>
+    <blackboard-system>./BlackboardSystem</blackboard-system>
+    <machine-learning-training>./AuditoryMachineLearningTrainingTestingPipeline</machine-learning-training>
+</repoPaths>
