@@ -126,21 +126,28 @@ close all
 %% check Zero Loc Sound
 H_pitch = audioread('H_Z.wav');
 L_pitch = audioread('L_Z.wav');
+H_pitch_modify = audioread('H_Z_modify.wav');
 
-subplot(1,2,1)
+subplot(1,3,1)
 hist(L_pitch)
 title('Low Pitch Amplitude Hist')
 
 grid on
 grid minor
 
-subplot(1,2,2)
+subplot(1,3,2)
 hist(H_pitch)
-title('High Pitch Amplitude Hist')
-legend('Left Channel','Right Channel','Location','northeast');
 
 grid on
 grid minor
+
+subplot(1,3,3)
+hist(H_pitch_modify)
+grid on
+grid minor
+
+title('High Pitch Refined Amplitude Hist')
+legend('Left Channel','Right Channel','Location','northeast');
 
 print('snd_high_low_pitch_check','-dpng','-r300')
 close all
