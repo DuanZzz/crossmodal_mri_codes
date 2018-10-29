@@ -163,8 +163,8 @@
         ir = get_ir(hrtf,X,head_orientation,xs,coordinate_system,conf);
         hav = audioread('high_pitch.wav');
         lav = audioread('low_pitch.wav');
-        H_AMP = max(max(hav));
-        L_AMP = max(max(lav));
+        %H_AMP = max(max(hav));
+        %L_AMP = max(max(lav));
         hsig = auralize_ir(ir,hav,0,conf);
         %resize_hsig = hsig(1:size(hav,1)+(sampleRate/1000)*20,:);
         lsig = auralize_ir(ir,lav,0,conf);
