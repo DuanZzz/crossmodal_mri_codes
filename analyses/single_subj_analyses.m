@@ -13,8 +13,9 @@ rootDir = '/Volumes/Data/Project/mri_data/';
 rawDataFile = kb_ls(fullfile(rootDir, 'subj_000', 'behv','*.csv'));
 rawData = readtable(rawDataFile{1});
 %% group data
-target_data = rawData(:,{'visual_size', 'visual_brightness', 'audio_pitch','audio_location','button'});
+target_data = rawData(:,{'visual_size', 'visual_brightness', 'audio_pitch','audio_location','button','RT'});
 target_data.button = target_data.button - 1;
+target_data = target_data(target_data.RT <= 1000,:);
 statarray = grpstats(target_data,{'visual_size', 'visual_brightness', 'audio_pitch','audio_location'},{'mean','gname'});
 condition_data = array2table(table2array(table([cellfun(@str2num,statarray.gname),statarray.mean_button*100])));
 condition_data.Properties.VariableNames={'vs','vb','ap','al','right_respon'};
@@ -64,8 +65,9 @@ p = plot(temp_plot_data);
 legend('Audio Only','Audio-Visual PS-incon PB-con','Audio-Visual PS-con PB-incon','Audio-Visual PS-incon PB-incon','Audio-Visual PS-con PB-con','Location','northwest');
 xticks([1,2,3,4,5])
 xticklabels({'-22.5','-10','0','10','22.5'});
-yticks([0,25,50,75,100])
-
+xlabel('Sound Location');
+yticks([0,25,50,75,100]);
+ylabel('Proportion of ''Right'' response');
 p(1).LineWidth = 1;
 p(1).LineStyle = '-';
 p(1).Color = 'm';
@@ -107,7 +109,9 @@ grid minor
 legend('Audio Only - High Pitch','Audio Only - Low Pitch','Location','northwest');
 xticks([1,2,3,4,5])
 xticklabels({'-22.5','-10','0','10','22.5'});
-yticks([0,25,50,75,100])
+xlabel('Sound Location');
+yticks([0,25,50,75,100]);
+ylabel('Proportion of ''Right'' response');
 
 p_debug(1).LineWidth = 1;
 p_debug(1).LineStyle = '-';
@@ -153,3 +157,26 @@ legend('Left Channel','Right Channel','Location','northeast');
 print('snd_high_low_pitch_check','-dpng','-r300')
 close all
 %}
+%% explore
+p_explore = plot(temp_data);
+grid on
+grid minor
+
+legend('Audio Only - High Pitch','Audio Only - Low Pitch','Big Size - High Brightness - High Pitch','Big Size - High Brightness - Low Pitch','Big Size - Low Brightness - High Pitch','Big Size - Low Brightness - Low Pitch','Small Size - High Brightness - High Pitch','Small Size - High Brightness - Low Pitch','Small Size - Low Brightness - High Pitch','Small Size - Low Brightness - Low Pitch','Location','northwest');
+xticks([1,2,3,4,5])
+xticklabels({'-22.5','-10','0','10','22.5'});
+xlabel('Sound Location');
+yticks([0,25,50,75,100]);
+ylabel('Proportion of ''Right'' response');
+p_explore(1).LineWidth = 3;
+p_explore(1).LineStyle = '-.';
+p_explore(1).Color = [46,139,87]./255;
+p_explore(1).Marker = '*';
+
+p_explore(2).LineWidth = 3;
+p_explore(2).LineStyle = '-.';
+p_explore(2).Color = 'r';
+p_explore(2).Marker = '*';
+
+print('explore_check','-dpng','-r300')
+close all
