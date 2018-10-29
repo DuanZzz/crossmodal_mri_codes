@@ -10,7 +10,7 @@ addpath(genpath(fun_dir));
 addpath(genpath(toolbox_dir));
 %% load raw data
 rootDir = '/Volumes/Data/Project/mri_data/';
-rawDataFile = kb_ls(fullfile(rootDir, 'subj_*', 'behv','*.csv'));
+rawDataFile = kb_ls(fullfile(rootDir, 'subj_000', 'behv','*.csv'));
 rawData = readtable(rawDataFile{1});
 %% group data
 target_data = rawData(:,{'visual_size', 'visual_brightness', 'audio_pitch','audio_location','button'});
@@ -55,7 +55,7 @@ end
 exportTemp = array2table(result(find(1-isnan(result))));
 exportTemp.Properties.VariableNames=cond_tag(find(1-isnan(result)))';
 
-writetable(exportTemp,'Sub00.csv','WriteVariableNames',true);
+writetable(exportTemp,'Sub000.csv','WriteVariableNames',true);
 
 %% visual check
 temp_plot_data = reshape(result(find(1-isnan(result))),5,5);
@@ -124,6 +124,7 @@ print('high_low_pitch_check','-dpng','-r300')
 close all
 
 %% check Zero Loc Sound
+%{
 H_pitch = audioread('H_Z.wav');
 L_pitch = audioread('L_Z.wav');
 H_pitch_modify = audioread('H_Z_modify.wav');
@@ -151,3 +152,4 @@ legend('Left Channel','Right Channel','Location','northeast');
 
 print('snd_high_low_pitch_check','-dpng','-r300')
 close all
+%}
