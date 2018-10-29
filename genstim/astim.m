@@ -152,6 +152,7 @@
     coordinate_system = 'spherical';
     %hrtf = SOFAload([pwd filesep 'datasets' '/SCUT_KEMAR_radius_1.sofa']);
     hrtf = SOFAload([pwd filesep 'datasets' '/QU_KEMAR_anechoic_0_5m.sofa']);
+    %hrtf = SOFAload([pwd filesep 'datasets' '/QU_KEMAR_anechoic_all.sofa']);
     conf = SFS_config;
     conf.ir.usehcomp = true;
     conf.ir.hcompfile = [pwd filesep 'datasets' '/QU_KEMAR_AKGK271_hcomp.wav'];
