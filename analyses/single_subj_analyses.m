@@ -1,9 +1,14 @@
 %% single subject analyses
 % Subj 00 = Jinbo
 % Subj 01 = Ruan
+% Subj 02 = Duan
+% Subj 03 = Cai
 %% zero the world
 clear,clc
 restoredefaultpath;
+%% target subj
+targetSubj = 'subj_03';
+
 %% load functions
 fun_dir = fullfile(pwd,'functions');
 toolbox_dir = fullfile(pwd,'toolbox');
@@ -11,7 +16,7 @@ addpath(genpath(fun_dir));
 addpath(genpath(toolbox_dir));
 %% load raw data
 rootDir = '/Volumes/Data/Project/mri_data/';
-rawDataFile = kb_ls(fullfile(rootDir, 'subj_01', 'behv','*.csv'));
+rawDataFile = kb_ls(fullfile(rootDir, targetSubj, 'behv','*.csv'));
 rawData = readtable(rawDataFile{1});
 %% group data
 target_data = rawData(:,{'visual_size', 'visual_brightness', 'audio_pitch','audio_location','button','RT'});
@@ -58,7 +63,7 @@ end
 exportTemp = array2table(result(find(1-isnan(result))));
 exportTemp.Properties.VariableNames=cond_tag(find(1-isnan(result)))';
 
-writetable(exportTemp,'Sub000.csv','WriteVariableNames',true);
+writetable(exportTemp,[targetSubj '.csv'],'WriteVariableNames',true);
 
 %% visual check
 temp_plot_data = reshape(result(find(1-isnan(result))),5,5);
@@ -100,7 +105,7 @@ grid on
 grid minor
 
 %% save fig
-print('curve_sub01','-dpng','-r300')
+print(['curve_' targetSubj],'-dpng','-r300')
 close all
 
 %% left shift
