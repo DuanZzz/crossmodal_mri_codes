@@ -1,5 +1,6 @@
 %% single subject analyses
 % Subj 00 = Jinbo
+% Subj 01 = Ruan
 %% zero the world
 clear,clc
 restoredefaultpath;
@@ -10,12 +11,13 @@ addpath(genpath(fun_dir));
 addpath(genpath(toolbox_dir));
 %% load raw data
 rootDir = '/Volumes/Data/Project/mri_data/';
-rawDataFile = kb_ls(fullfile(rootDir, 'subj_000', 'behv','*.csv'));
+rawDataFile = kb_ls(fullfile(rootDir, 'subj_01', 'behv','*.csv'));
 rawData = readtable(rawDataFile{1});
 %% group data
 target_data = rawData(:,{'visual_size', 'visual_brightness', 'audio_pitch','audio_location','button','RT'});
 target_data.button = target_data.button - 1;
 target_data = target_data(target_data.RT <= 1000,:);
+target_data = target_data(target_data.RT > 200,:);
 statarray = grpstats(target_data,{'visual_size', 'visual_brightness', 'audio_pitch','audio_location'},{'mean','gname'});
 condition_data = array2table(table2array(table([cellfun(@str2num,statarray.gname),statarray.mean_button*100])));
 condition_data.Properties.VariableNames={'vs','vb','ap','al','right_respon'};
@@ -98,7 +100,7 @@ grid on
 grid minor
 
 %% save fig
-print('curve_sub00','-dpng','-r300')
+print('curve_sub01','-dpng','-r300')
 close all
 
 %% left shift
